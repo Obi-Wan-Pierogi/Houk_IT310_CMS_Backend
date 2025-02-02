@@ -1,0 +1,6 @@
+@Houk_IT310_CMS_Backend_HostAddress = http://localhost:5004
+
+GET {{Houk_IT310_CMS_Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
