@@ -4,6 +4,7 @@ using Houk_IT310_CMS_Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Houk_IT310_CMS_Backend.Migrations
 {
     [DbContext(typeof(CMS_BackendContext))]
-    partial class CMS_BackendContextModelSnapshot : ModelSnapshot
+    [Migration("20250210213922_InitialIdentity")]
+    partial class InitialIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,24 +88,6 @@ namespace Houk_IT310_CMS_Backend.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f5a353e-cb54-4879-aaa4-b067ec506d5c",
-                            Email = "test@test.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "TEST@TEST.COM",
-                            NormalizedUserName = "TEST@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEOPV6hLrGWOD8xh8jEVNQ6qBO+wbexNZZy1FzFvHOZsxa/MAfgOIfAm2ch8jRSQkQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "3c6c1f27-4ea8-4abe-96ec-71e57ca6791e",
-                            TwoFactorEnabled = false,
-                            UserName = "test@test.com"
-                        });
                 });
 
             modelBuilder.Entity("Houk_IT310_CMS_Backend.Models.Category", b =>
@@ -152,9 +137,9 @@ namespace Houk_IT310_CMS_Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContentId"));
 
-                    b.Property<string>("AuthorId")
+                    b.Property<string>("Author")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Body")
                         .IsRequired()
@@ -178,8 +163,6 @@ namespace Houk_IT310_CMS_Backend.Migrations
 
                     b.HasKey("ContentId");
 
-                    b.HasIndex("AuthorId");
-
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Content");
@@ -188,45 +171,45 @@ namespace Houk_IT310_CMS_Backend.Migrations
                         new
                         {
                             ContentId = 1,
-                            AuthorId = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
+                            Author = "Lee",
                             Body = "It's toasty",
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9241),
+                            CreatedAt = new DateTime(2025, 2, 10, 13, 39, 21, 733, DateTimeKind.Local).AddTicks(2595),
                             Title = "Toast Post",
-                            UpdatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9298),
+                            UpdatedAt = new DateTime(2025, 2, 10, 13, 39, 21, 733, DateTimeKind.Local).AddTicks(2653),
                             Visibility = 0
                         },
                         new
                         {
                             ContentId = 2,
-                            AuthorId = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
+                            Author = "Lee",
                             Body = "And sometimes useful",
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9302),
+                            CreatedAt = new DateTime(2025, 2, 10, 13, 39, 21, 733, DateTimeKind.Local).AddTicks(2656),
                             Title = "AI is cool",
-                            UpdatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9303),
+                            UpdatedAt = new DateTime(2025, 2, 10, 13, 39, 21, 733, DateTimeKind.Local).AddTicks(2657),
                             Visibility = 0
                         },
                         new
                         {
                             ContentId = 3,
-                            AuthorId = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
+                            Author = "Lee",
                             Body = "This is my first post.",
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9305),
+                            CreatedAt = new DateTime(2025, 2, 10, 13, 39, 21, 733, DateTimeKind.Local).AddTicks(2660),
                             Title = "Guess What?",
-                            UpdatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9307),
+                            UpdatedAt = new DateTime(2025, 2, 10, 13, 39, 21, 733, DateTimeKind.Local).AddTicks(2661),
                             Visibility = 0
                         },
                         new
                         {
                             ContentId = 4,
-                            AuthorId = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
+                            Author = "Lee",
                             Body = "Let's eat tacos",
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9309),
+                            CreatedAt = new DateTime(2025, 2, 10, 13, 39, 21, 733, DateTimeKind.Local).AddTicks(2662),
                             Title = "Taco Time",
-                            UpdatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9310),
+                            UpdatedAt = new DateTime(2025, 2, 10, 13, 39, 21, 733, DateTimeKind.Local).AddTicks(2664),
                             Visibility = 0
                         });
                 });
@@ -370,19 +353,11 @@ namespace Houk_IT310_CMS_Backend.Migrations
 
             modelBuilder.Entity("Houk_IT310_CMS_Backend.Models.Content", b =>
                 {
-                    b.HasOne("Houk_IT310_CMS_Backend.Areas.Identity.Data.BlogUser", "Author")
-                        .WithMany("Posts")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Houk_IT310_CMS_Backend.Models.Category", "Category")
                         .WithMany("PostedContent")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Author");
 
                     b.Navigation("Category");
                 });
@@ -436,11 +411,6 @@ namespace Houk_IT310_CMS_Backend.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Houk_IT310_CMS_Backend.Areas.Identity.Data.BlogUser", b =>
-                {
-                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("Houk_IT310_CMS_Backend.Models.Category", b =>

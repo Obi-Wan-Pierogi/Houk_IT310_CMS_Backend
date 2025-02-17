@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Houk_IT310_CMS_Backend.Data;
 using Houk_IT310_CMS_Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Houk_IT310_CMS_Backend.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
@@ -23,6 +25,7 @@ namespace Houk_IT310_CMS_Backend.Controllers
 
         // GET: api/Categories
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategory()
         {
             return await _context.Category.ToListAsync();
@@ -30,6 +33,7 @@ namespace Houk_IT310_CMS_Backend.Controllers
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Category>> GetCategory(int id)
         {
             var category = await _context.Category.FindAsync(id);
@@ -85,7 +89,7 @@ namespace Houk_IT310_CMS_Backend.Controllers
         }
 
         // DELETE: api/Categories/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")]       
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _context.Category.FindAsync(id);

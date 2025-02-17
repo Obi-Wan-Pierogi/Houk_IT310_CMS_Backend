@@ -4,6 +4,7 @@ using Houk_IT310_CMS_Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Houk_IT310_CMS_Backend.Migrations
 {
     [DbContext(typeof(CMS_BackendContext))]
-    partial class CMS_BackendContextModelSnapshot : ModelSnapshot
+    [Migration("20250217001407_UpdatedSeedData")]
+    partial class UpdatedSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

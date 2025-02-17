@@ -4,6 +4,7 @@ using Houk_IT310_CMS_Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Houk_IT310_CMS_Backend.Migrations
 {
     [DbContext(typeof(CMS_BackendContext))]
-    partial class CMS_BackendContextModelSnapshot : ModelSnapshot
+    [Migration("20250211073744_AddedSeedUser")]
+    partial class AddedSeedUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,15 +94,15 @@ namespace Houk_IT310_CMS_Backend.Migrations
                         {
                             Id = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f5a353e-cb54-4879-aaa4-b067ec506d5c",
+                            ConcurrencyStamp = "0722a5c5-7359-41fa-89ff-9027169fbb0e",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEOPV6hLrGWOD8xh8jEVNQ6qBO+wbexNZZy1FzFvHOZsxa/MAfgOIfAm2ch8jRSQkQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECpgmr56BtPUrvTF6z0iB4EiwmTnRuWhyY7Z0J5iEmD602G1ovtJyWPPDfdNsAh1+g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3c6c1f27-4ea8-4abe-96ec-71e57ca6791e",
+                            SecurityStamp = "d57b2015-34ac-4306-87ec-0adebbfb1f88",
                             TwoFactorEnabled = false,
                             UserName = "test@test.com"
                         });
@@ -191,42 +194,9 @@ namespace Houk_IT310_CMS_Backend.Migrations
                             AuthorId = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
                             Body = "It's toasty",
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9241),
+                            CreatedAt = new DateTime(2025, 2, 10, 23, 37, 44, 147, DateTimeKind.Local).AddTicks(8038),
                             Title = "Toast Post",
-                            UpdatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9298),
-                            Visibility = 0
-                        },
-                        new
-                        {
-                            ContentId = 2,
-                            AuthorId = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
-                            Body = "And sometimes useful",
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9302),
-                            Title = "AI is cool",
-                            UpdatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9303),
-                            Visibility = 0
-                        },
-                        new
-                        {
-                            ContentId = 3,
-                            AuthorId = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
-                            Body = "This is my first post.",
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9305),
-                            Title = "Guess What?",
-                            UpdatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9307),
-                            Visibility = 0
-                        },
-                        new
-                        {
-                            ContentId = 4,
-                            AuthorId = "9a4bb6da-00d4-4bb0-adef-61006445fdb5",
-                            Body = "Let's eat tacos",
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9309),
-                            Title = "Taco Time",
-                            UpdatedAt = new DateTime(2025, 2, 16, 16, 14, 6, 804, DateTimeKind.Local).AddTicks(9310),
+                            UpdatedAt = new DateTime(2025, 2, 10, 23, 37, 44, 147, DateTimeKind.Local).AddTicks(8103),
                             Visibility = 0
                         });
                 });

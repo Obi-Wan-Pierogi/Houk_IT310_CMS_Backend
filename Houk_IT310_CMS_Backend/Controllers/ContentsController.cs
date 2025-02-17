@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Houk_IT310_CMS_Backend.Data;
 using Houk_IT310_CMS_Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Houk_IT310_CMS_Backend.Controllers
 {
+    [Authorize] 
     [Route("api/[controller]")]
     [ApiController]
     public class ContentsController : ControllerBase
@@ -21,7 +23,9 @@ namespace Houk_IT310_CMS_Backend.Controllers
             _context = context;
         }
 
+
         // GET: api/Contents
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Content>>> GetContent()
         {
@@ -29,6 +33,7 @@ namespace Houk_IT310_CMS_Backend.Controllers
         }
 
         // GET: api/Contents/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<Content>> GetContent(int id)
         {
@@ -43,7 +48,6 @@ namespace Houk_IT310_CMS_Backend.Controllers
         }
 
         // PUT: api/Contents/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutContent(int id, Content content)
         {
@@ -74,7 +78,6 @@ namespace Houk_IT310_CMS_Backend.Controllers
         }
 
         // POST: api/Contents
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Content>> PostContent(Content content)
         {
