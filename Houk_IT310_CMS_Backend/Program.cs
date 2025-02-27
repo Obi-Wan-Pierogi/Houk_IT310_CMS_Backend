@@ -21,8 +21,9 @@ namespace Houk_IT310_CMS_Backend
 
             // link up the identity, and links to the database
             builder.Services.AddDefaultIdentity<BlogUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<CMS_BackendContext>();
-
+                
             // Add services to the container.
 
             builder.Services.AddControllers().AddJsonOptions(options =>
@@ -35,6 +36,8 @@ namespace Houk_IT310_CMS_Backend
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddRazorPages();
+            
 
             var app = builder.Build();
 
