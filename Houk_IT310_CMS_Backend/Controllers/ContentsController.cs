@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Houk_IT310_CMS_Backend.Controllers
 {
-    [Authorize] 
+     
     [Route("api/[controller]")]
     [ApiController]
     public class ContentsController : ControllerBase

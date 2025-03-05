@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
-import { DataService, Page } from '../data.service';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from 'express';
+import { Component, OnInit } from '@angular/core';
+import { DataService, Post } from '../data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { mergeMap } from 'rxjs/internal/operators/mergeMap';
+import { tap } from 'rxjs';
+
 
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
   styleUrl: './post-detail.component.css'
 })
-export class PostDetailComponent {
+export class PostDetailComponent implements OnInit{
   id: number = 0;
-  post: Page | undefined;
+  post: Post | undefined;
 
   constructor(private data: DataService,
     private route: ActivatedRoute,
@@ -31,16 +33,17 @@ export class PostDetailComponent {
         postedContent: []
       }
     };
-    this.initComponent();
   }
-
-  initComponent() {
-    this.route.paramMap.subscribe(params => {
-      this.id = Number(params.get("id"));
-      this.post = this.data.pages.find(p => p.contentId == this.id);
+  ngOnInit(): void {
+    this.route.paramMap.pipe(
+      tap(console.log),
+      mergeMap(params => {
+        this.id = Number(params.get("id"));
+        return this.data.getPostById(this.id);
+      })
+    ).subscribe(data => {
+      console.log(data);
+      this.post = data;
     });
-
-    
   }
-
 }

@@ -1,0 +1,16 @@
+<div class="post-item m-2 me-4">
+  <h3>{{ post.title }}</h3>
+  <h5>Updated On: {{ post.updatedAt | date:'fullDate' }}</h5>
+  <div class="post-controls btn-group">
+    <button class="btn btn-small btn-danger" (click)="onDelete()">Delete</button>
+    <button class="btn btn-success" [routerLink]="['/post', post.contentId, 'edit']">Edit</button>
+  </div>
+  <p>
+    {{ post.body }}
+  </p>
+  <ul>
+    <li>{{ post.category.categoryName }}</li>
+  </ul>
+  <a class="btn btn-primary"[routerLink]="['/post', [post.contentId]]">Details</a>
+</div> 
+

@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, delay, map, tap } from 'rxjs';
 
-export interface Page {
+export interface Post {
   contentId: number;
   title: string;
   body: string;
@@ -14,7 +16,7 @@ export interface Page {
 export interface Category {
   categoryId: number;
   categoryName: string;
-  postedContent: Page[];
+  postedContent: Post[];
 }
 
 @Injectable({
@@ -22,10 +24,10 @@ export interface Category {
 })
 export class DataService {
 
-  pages: Page[];
+  posts: Post[];
 
-  constructor() {
-    this.pages = [
+  constructor(private _http: HttpClient) {
+    this.posts = [
       {
         contentId: 1,
         title: 'Toast Stuff',
@@ -84,4 +86,40 @@ export class DataService {
       }
     ];
   }
+
+  getAllPosts(): Observable<Post[]> {
+    return this._http.get<Post[]>('/api/contents')
+  }
+
+  getPostById(id: number): Observable<Post> {
+    return this._http.get<Post>('/api/contents/' + id)
+    /*
+    return this._http.get<Post>('/api/contents/' + id).pipe(
+      tap(x => {
+        console.log('Fired getPostById with the following object', x);
+      }),
+      delay(5000),
+      tap(x => {
+        console.log('Completed delay', x);
+      }),
+    );
+    */
+  }
+
+  createPost(post: Post): Observable<Post> {
+    return this._http.post<Post>('/api/contents/', post)
+  }
+
+  updatePost(id: number, post: Post): Observable<Post> {
+    return this._http.put<Post>('/api/contents/' + id, post)
+  }
+
+  deletePostById(id: number): Observable<any> {
+    return this._http.delete<any>('api/contents/' + id)
+  }
+
+  deletePost(post: Post): Observable<any> {
+    return this._http.delete<any>('api/contents/' + post.contentId)
+  }
+
 }
